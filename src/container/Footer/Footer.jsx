@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { images } from '../../constants';
-import { AppWrap, MotionWrap } from '../../wrapper';
-import { client } from '../../client';
-import './Footer.scss';
+import { images } from "../../constants";
+import { AppWrap, MotionWrap } from "../../wrapper";
+import { client } from "../../client";
+import "./Footer.scss";
 
 const Footer = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -21,13 +25,14 @@ const Footer = () => {
     setLoading(true);
 
     const contact = {
-      _type: 'contact',
+      _type: "contact",
       name: formData.username,
       email: formData.email,
       message: formData.message,
     };
 
-    client.create(contact)
+    client
+      .create(contact)
       .then(() => {
         setLoading(false);
         setIsFormSubmitted(true);
@@ -42,20 +47,38 @@ const Footer = () => {
       <div className="app__footer-cards">
         <div className="app__footer-card ">
           <img src={images.email} alt="email" />
-          <a href="mailto:kastokniv@gmail.com" className="p-text">kastokniv@gmail.com</a>
+          <a href="mailto:kastokniv@gmail.com" className="p-text">
+            kastokniv@gmail.com
+          </a>
         </div>
         <div className="app__footer-card">
           <img src={images.mobile} alt="phone" />
-          <a href="tel:090-9365-5980" className="p-text">090-9365-5980</a>
+          <a href="tel:090-9365-5980" className="p-text">
+            090-9365-5980
+          </a>
         </div>
       </div>
       {!isFormSubmitted ? (
         <div className="app__footer-form app__flex">
           <div className="app__flex">
-            <input className="p-text" type="text" placeholder="名前" name="username" value={username} onChange={handleChangeInput} />
+            <input
+              className="p-text"
+              type="text"
+              placeholder="名前"
+              name="username"
+              value={username}
+              onChange={handleChangeInput}
+            />
           </div>
           <div className="app__flex">
-            <input className="p-text" type="email" placeholder="メール" name="email" value={email} onChange={handleChangeInput} />
+            <input
+              className="p-text"
+              type="email"
+              placeholder="メール"
+              name="email"
+              value={email}
+              onChange={handleChangeInput}
+            />
           </div>
           <div>
             <textarea
@@ -66,13 +89,13 @@ const Footer = () => {
               onChange={handleChangeInput}
             />
           </div>
-          <button type="button" className="p-text" onClick={handleSubmit}>{!loading ? '送信' : '送信中...'}</button>
+          <button type="button" className="p-text" onClick={handleSubmit}>
+            {!loading ? "送信" : "送信中..."}
+          </button>
         </div>
       ) : (
         <div>
-          <h3 className="head-text">
-            ご連絡ありがとうございます!
-          </h3>
+          <h3 className="head-text">ご連絡ありがとうございます!</h3>
         </div>
       )}
     </>
@@ -80,7 +103,7 @@ const Footer = () => {
 };
 
 export default AppWrap(
-  MotionWrap(Footer, 'app__footer'),
-  'contact',
-  'app__whitebg',
+  MotionWrap(Footer, "app__footer"),
+  "contact",
+  "app__whitebg"
 );
