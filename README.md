@@ -1,6 +1,7 @@
 # Portfolio Web Page
 
 This project is a portfolio web page built with React.js, TypeScript, and Sanity as the backend.
+Check the ive version at [https://dev-kastokniv-portfolio.netlify.app/](https://dev-kastokniv-portfolio.netlify.app/)
 
 ## Features
 
