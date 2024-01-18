@@ -105,7 +105,11 @@ const Work = () => {
               </p>
 
               <div className="app__work-tag app__flex">
-                <p className="p-text">{work.tags[0]}</p>
+                <p className="p-text">
+                  {work.tags && Array.isArray(work.tags) && work.tags.length > 0
+                    ? work.tags[0]
+                    : "No tags"}
+                </p>
               </div>
             </div>
           </div>
